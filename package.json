@@ -1,0 +1,21 @@
+{
+  "name": "vwbl-hls-create",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/VWBL/vwbl-hls-create.git",
+  "author": "seki <schokolade0317@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run build:live",
+    "build": "tsc -p .",
+    "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.24",
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2"
+  }
+}
