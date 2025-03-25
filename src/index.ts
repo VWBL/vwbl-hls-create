@@ -1,16 +1,17 @@
 import ffmpeg from "fluent-ffmpeg";
 import * as fs from "fs";
 import * as util from "util";
+import {Readable} from "stream";
 
 export const makeEncryptedHls = (
-  filePath: string,
+  input: string | Readable,
   key: string,
   duration?: number,
   iv?: string,
   outFileName?: string,
   callback?: (err?: Error) => void
 ) => {
-  const command = ffmpeg(filePath);
+  const command = ffmpeg(input);
   console.log("make hls start");
   command
     .addOption([
