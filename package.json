@@ -1,14 +1,20 @@
 {
   "name": "vwbl-hls-create",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
   "repository": "https://github.com/VWBL/vwbl-hls-create.git",
   "author": "seki <schokolade0317@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run build:live",
-    "build": "tsc -p .",
-    "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts"
+    "build": "tsc && tsc -p tsconfig.esm.json"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
   },
   "devDependencies": {
     "@types/fluent-ffmpeg": "^2.1.24",
