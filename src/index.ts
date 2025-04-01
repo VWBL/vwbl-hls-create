@@ -15,7 +15,7 @@ export const makeEncryptedHls = (
   const command = ffmpeg(input);
   console.log("make hls start");
   command
-    .addOption([
+    .addOptions([
       `-hls_enc 1`, // 1 = enable enc
       `-hls_enc_key ${key}`,
       `-hls_enc_iv ${iv || "0".repeat(32)}`,
@@ -26,7 +26,7 @@ export const makeEncryptedHls = (
       `-hls_list_size 0`,
       `-f hls`,
     ])
-    .addOption(ffmpegOptions || [])
+    .addOptions(ffmpegOptions || [])
     .output(outFileName || "output.m3u8")
     .on("end", (stdout) => {
       console.log(stdout);
