@@ -10,6 +10,12 @@
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@types/fluent-ffmpeg": "^2.1.24",
     "@types/node": "^20.9.0",
