@@ -9,6 +9,7 @@ export const makeEncryptedHls = (
   duration?: number,
   iv?: string,
   outFileName?: string,
+  ffmpegOptions?: string[],
   callback?: (err?: Error) => void
 ) => {
   const command = ffmpeg(input);
@@ -21,10 +22,11 @@ export const makeEncryptedHls = (
       `-profile:v baseline`,
       `-level 3.0`,
       `-start_number 0`,
-      `-hls_time ${duration || 2}`,
+      `-hls_time ${duration || 4}`,
       `-hls_list_size 0`,
       `-f hls`,
     ])
+    .addOption(ffmpegOptions || [])
     .output(outFileName || "output.m3u8")
     .on("end", (stdout) => {
       console.log(stdout);
